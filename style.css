@@ -1,0 +1,274 @@
+
+:root {
+  font-family: Arial, sans-serif;
+  --bg: #f0f3fa;
+  --card: #ffffff;
+  --display: #f5f7fc;
+  --text: #20263a;
+  --muted: #778097;
+  --key: #edf0f8;
+  --function: #dfe8ff;
+  --function-text: #2858bd;
+  --border: #e1e6f0;
+  --accent: #4169e1;
+  --danger: #ffe4e6;
+  --danger-text: #c62840;
+  --shadow: 0 12px 40px rgba(37, 51, 90, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 28px 16px;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s, color 0.25s;
+}
+
+body.dark {
+  color-scheme: dark;
+  --bg: #101522;
+  --card: #1b2232;
+  --display: #121927;
+  --text: #eef2ff;
+  --muted: #a0abc2;
+  --key: #2a3448;
+  --function: #293d66;
+  --function-text: #b8ccff;
+  --border: #303b50;
+  --accent: #7193ff;
+  --danger: #492832;
+  --danger-text: #ffb5c1;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.12s, filter 0.12s;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.app {
+  width: min(100%, 440px);
+  margin: 0 auto;
+}
+
+.topbar,
+.history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar {
+  margin-bottom: 18px;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.topbar p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.calculator,
+.history-panel {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.display {
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: var(--display);
+  text-align: right;
+}
+
+.expression {
+  min-height: 22px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.screen {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  text-align: right;
+  font-size: clamp(28px, 7vw, 38px);
+  font-weight: bold;
+}
+
+.message {
+  min-height: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.message.error {
+  color: #e05252;
+}
+
+/* Scientific functions: 5 columns */
+.scientific-keys {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+/* Main keypad: 4 columns */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  width: 100%;
+  min-width: 0;
+  min-height: 55px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--key);
+  color: var(--text);
+  font-size: 20px;
+}
+
+.key:hover {
+  filter: brightness(0.96);
+}
+
+.key:active {
+  transform: scale(0.94);
+}
+
+.key.function {
+  background: var(--function);
+  color: var(--function-text);
+}
+
+.key.danger {
+  background: var(--danger);
+  color: var(--danger-text);
+}
+
+.key.equals {
+  background: var(--accent);
+  color: white;
+  font-weight: bold;
+}
+
+/* History */
+.history-panel {
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.history-heading h2 {
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.text-btn {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+}
+
+.history-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.history-item button {
+  max-width: 65%;
+  overflow-wrap: anywhere;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+
+.history-item strong {
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.empty {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer {
+  padding: 20px 0 4px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+@media (max-width: 380px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .calculator {
+    padding: 12px;
+  }
+
+  .scientific-keys,
+  .keypad {
+    gap: 6px;
+  }
+
+  .key {
+    min-height: 46px;
+    font-size: 16px;
+  }
+}
